@@ -34,12 +34,21 @@ export default Component.extend({
 
   actions: {
     handleCommentSubmit(comment) {
+      let oldComments = get(this, 'data');
       let url = get(this, 'url');
+
+      set(comment, 'id', Date.now());
+
+      let newComments = oldComments.concat([comment]);
+      set(this, 'data', newComments);
 
       get(this, 'ajax')
         .post(url, { data: JSON.stringify(comment) })
         .then((comments) => set(this, 'data', comments))
-        .catch((error) => console.error(error));
+        .catch((error) => {
+          set(this, 'data', oldComments);
+          console.error(error);
+        });
     }
   }
 });
