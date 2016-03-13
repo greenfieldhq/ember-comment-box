@@ -1,7 +1,5 @@
-{{#comment-list-item author="Yehuda Katz"}}
-  {{markdown-render "This is one comment"}}
-{{/comment-list-item}}
-
-{{#comment-list-item author="Tom Dale"}}
-  {{markdown-render "This is *another* comment"}}
-{{/comment-list-item}}
+{{#each data as |comment|}}
+  {{#comment-list-item author=comment.author}}
+    {{markdown-render comment.text}}
+  {{/comment-list-item}}
+{{/each}}
