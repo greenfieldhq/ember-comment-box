@@ -17,6 +17,15 @@ export default Component.extend({
 
     this.data = [];
 
+    this.loadCommentsFromServer();
+
+    setInterval(
+      this.loadCommentsFromServer.bind(this),
+      get(this, 'pollInterval')
+    );
+  },
+
+  loadCommentsFromServer() {
     get(this, 'ajax')
       .request(get(this, 'url'))
       .then((comments) => set(this, 'data', comments))
