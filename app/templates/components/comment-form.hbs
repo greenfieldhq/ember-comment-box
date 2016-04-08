@@ -1,5 +1,15 @@
 <form class="commentForm">
-  <input type="text" placeholder="Your name" />
-  <input type="text" placeholder="Say something..." />
+  <input
+    type="text"
+    placeholder="Your name"
+    value={{author}}
+    oninput={{action "handleAuthorChange"}}
+  />
+  <input
+    type="text"
+    placeholder="Say something..."
+    value={{text}}
+    oninput={{action "handleTextChange"}}
+  />
   <input type="submit" value="Post" />
 </form>
