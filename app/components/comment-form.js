@@ -33,7 +33,7 @@ export default Component.extend({
         return;
       }
 
-      // TODO: Send request to the server
+      get(this, 'onCommentSubmit')({ author, text });
       setProperties(this, { author: '', text: '' });
     }
   }

@@ -30,5 +30,16 @@ export default Component.extend({
       .request(get(this, 'url'))
       .then((comments) => set(this, 'data', comments))
       .catch((error) => console.error(error));
+  },
+
+  actions: {
+    handleCommentSubmit(comment) {
+      let url = get(this, 'url');
+
+      get(this, 'ajax')
+        .post(url, { data: JSON.stringify(comment) })
+        .then((comments) => set(this, 'data', comments))
+        .catch((error) => console.error(error));
+    }
   }
 });
